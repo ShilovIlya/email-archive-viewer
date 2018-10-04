@@ -1,2 +1,8 @@
 <div>Email Archive Viewer</div>
-
+<div *ngFor="let mail of mails" class="mail">
+  <div>from: {{mail.from}}</div>
+  <div>to: {{mail.to}}</div>
+  <div>subject: {{mail.subject}}</div>
+  <div>date: {{mail.date}}</div>
+  <div>body: {{mail.body}}</div>
+</div>
