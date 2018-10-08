@@ -10,7 +10,7 @@
         "component-selector": [
             true,
             "element",
-            "app",
+            "eav",
             "kebab-case"
         ],
         "no-consecutive-blank-lines": [true, 2]

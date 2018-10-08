@@ -1,4 +1,4 @@
-export class Mail {
+export class Letter {
   constructor(public from: string,
               public to: string[],
               public subject: string,

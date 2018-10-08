@@ -1,8 +1,8 @@
 <div>Email Archive Viewer</div>
-<div *ngFor="let mail of mails" class="mail">
-  <div>from: {{mail.from}}</div>
-  <div>to: {{mail.to}}</div>
-  <div>subject: {{mail.subject}}</div>
-  <div>date: {{mail.date}}</div>
-  <div>body: {{mail.body}}</div>
+<div>
+  <eav-address-filter></eav-address-filter>
+  <eav-date-filter></eav-date-filter>
+  <eav-text-search></eav-text-search>
+  <eav-pagination></eav-pagination>
 </div>
+<eav-letters-sheet></eav-letters-sheet>
