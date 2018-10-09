@@ -1,1 +1,4 @@
-<span>Filter by address:</span><input type="email">
+<span>Filter by address:</span>
+<select multiple [(ngModel)]="selectedAddresses" (change)="onAddressesChange()">
+  <option *ngFor="let address of addresses | async">{{address}}</option>
+</select>

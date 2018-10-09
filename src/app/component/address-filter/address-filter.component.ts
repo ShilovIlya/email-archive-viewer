@@ -1,4 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {Observable} from "rxjs";
+import {Letter} from "../../model/letter";
+import {EmailDataService} from "../../service/email-data.service";
 
 @Component({
   selector: 'eav-address-filter',
@@ -8,15 +11,17 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class AddressFilterComponent implements OnInit {
   @Input() emails: string[];
   @Output() changeEmails = new EventEmitter<string[]>();
+  addresses: Observable<string[]>;
+  selectedAddresses: string[];
 
-  constructor() { }
+  constructor(private emailService: EmailDataService) { }
 
   ngOnInit() {
-    setTimeout(() => this.update(), 8000);
+    this.addresses = this.emailService.addresses;
+    this.emailService.load();
   }
 
-  update() {
-    this.changeEmails.emit(['renee.ratcliff@enron.com']);
+  onAddressesChange() {
+    this.changeEmails.emit(this.selectedAddresses);
   }
-
 }

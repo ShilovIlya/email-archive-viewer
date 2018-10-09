@@ -1,1 +1,5 @@
-<input #textSearch class="text-search" placeholder="Поиск в почте">
+<input #searchTerm
+       class="text-search"
+       placeholder="Поиск в почте"
+       (keyup)="changeSearchTerm(searchTerm.value)">
+{{searchText}}

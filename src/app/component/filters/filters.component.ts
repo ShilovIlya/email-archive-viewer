@@ -40,7 +40,6 @@ export class FiltersComponent implements OnInit {
 
   updateFilter() {
     this.emailService.filter = this.filter;
-    this.emailService.load();
   }
 
 }

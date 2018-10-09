@@ -8,22 +8,27 @@ import { Filter } from '../model/filter';
 @Injectable()
 export class EmailDataService {
   letters: Observable<Letter[]>;
+  addresses: Observable<string[]>;
   private _letters: BehaviorSubject<Letter[]>;
+  private _addresses: BehaviorSubject<string[]>;
   private dataStore: {
-    letters: Letter[]
+    letters: Letter[],
+    addresses: string[]
   };
   private _filter: Filter;
 
   constructor(private http: HttpClient) {
-    this.dataStore = {letters: []};
+    this.dataStore = {letters: [], addresses: []};
     this._letters = <BehaviorSubject<Letter[]>>new BehaviorSubject([]);
+    this._addresses = <BehaviorSubject<string[]>>new BehaviorSubject([]);
     this._filter = new Filter('', [], '', '');
     this.letters = this._letters.asObservable();
+    this.addresses = this._addresses.asObservable();
   }
 
   set filter(filter: Filter) {
     this._filter = filter;
-    this.load();
+    this.filterLetters();
   }
 
   load() {
@@ -34,15 +39,25 @@ export class EmailDataService {
       .subscribe(
         letters => {
           this.dataStore.letters = letters;
-          const filteredLetters = Object.assign({}, this.dataStore).letters
-            .filter(this.checkEmailFilter)
-            .filter(this.checkDate)
-            .filter(this.checkSearchText);
-          this._letters.next(filteredLetters);
+          this.dataStore.addresses = this.parseLettersToAddresses(letters);
+          this.filterLetters();
+          const addresses = Object.assign({}, this.dataStore).addresses;
+          this._addresses.next(addresses);
         },
         error => console.log(error)
       );
   }
+
+  filterLetters() {
+    const filteredLetters = Object.assign({}, this.dataStore).letters
+      .filter(this.checkEmailFilter)
+      .filter(this.checkDate)
+      .filter(this.checkSearchText);
+    this._letters.next(filteredLetters);
+  }
+
+  parseLettersToAddresses = letters => letters.reduce((result, letter) => result.concat(letter.to, letter.from), [])
+    .filter((value, index, array) => array.indexOf(value) === index);
 
   checkSearchText = (letter: Letter): boolean =>
     letter.subject.includes(this._filter.searchText) || letter.body.includes(this._filter.searchText)
