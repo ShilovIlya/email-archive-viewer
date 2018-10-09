@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EmailDataService } from '../../service/email-data.service';
 import { Letter } from '../../model/letter';
+import { Observable } from 'rxjs/index';
 
 @Component({
   selector: 'eav-letters-sheet',
@@ -8,12 +9,13 @@ import { Letter } from '../../model/letter';
   styleUrls: ['./letters-sheet.component.css']
 })
 export class LettersSheetComponent implements OnInit {
-  letters: Letter[];
+  letters: Observable<Letter[]>;
 
   constructor(private emailService: EmailDataService) { }
 
   ngOnInit() {
-    this.emailService.getEmails().subscribe(letters => this.letters = letters);
+    this.letters = this.emailService.letters;
+    this.emailService.load();
   }
 
 }

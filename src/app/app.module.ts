@@ -9,6 +9,7 @@ import { AddressFilterComponent } from './component/address-filter/address-filte
 import { DateFilterComponent } from './component/date-filter/date-filter.component';
 import { PaginationComponent } from './component/pagination/pagination.component';
 import { LettersSheetComponent } from './component/letters-sheet/letters-sheet.component';
+import { FiltersComponent } from './component/filters/filters.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LettersSheetComponent } from './component/letters-sheet/letters-sheet.c
     AddressFilterComponent,
     DateFilterComponent,
     PaginationComponent,
-    LettersSheetComponent
+    LettersSheetComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
