@@ -12,13 +12,18 @@ export class EmailDataService {
   private dataStore: {
     letters: Letter[]
   };
-  private filter: Filter;
+  private _filter: Filter;
 
   constructor(private http: HttpClient) {
     this.dataStore = {letters: []};
     this._letters = <BehaviorSubject<Letter[]>>new BehaviorSubject([]);
-    this.filter = new Filter('interpret', ['k..allen@enron.com', 'john.lavorato@enron.com'], '2001-09-29', '2001-11-07');
+    this._filter = new Filter('', [], '', '');
     this.letters = this._letters.asObservable();
+  }
+
+  set filter(filter: Filter) {
+    this._filter = filter;
+    this.load();
   }
 
   load() {
@@ -40,12 +45,13 @@ export class EmailDataService {
   }
 
   checkSearchText = (letter: Letter): boolean =>
-    letter.subject.includes(this.filter.searchText) || letter.body.includes(this.filter.searchText)
+    letter.subject.includes(this._filter.searchText) || letter.body.includes(this._filter.searchText)
 
   checkDate = (letter: Letter): boolean =>
-    this.filter.dateFrom <= letter.date && letter.date <= this.filter.dateTo
+    (!this._filter.dateFrom || this._filter.dateFrom <= letter.date)
+    && (!this._filter.dateTo || letter.date <= this._filter.dateTo)
 
   checkEmailFilter = (letter: Letter): boolean =>
-    this.filter.emails.includes(letter.from) ||
-      letter.to.reduce((result, email) => result || this.filter.emails.includes(email), false)
+    !this._filter.emails.length || this._filter.emails.includes(letter.from)
+    || letter.to.reduce((result, email) => result || this._filter.emails.includes(email), false)
 }

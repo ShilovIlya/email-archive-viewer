@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Filter } from '../../model/filter';
+import { EmailDataService } from '../../service/email-data.service';
 
 @Component({
   selector: 'eav-filters',
@@ -6,10 +8,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filters.component.css']
 })
 export class FiltersComponent implements OnInit {
+  filter: Filter;
 
-  constructor() { }
+  constructor(private emailService: EmailDataService) {
+  }
 
   ngOnInit() {
+    this.filter = new Filter('', [], '', '');
+    this.emailService.filter = this.filter;
+  }
+
+  onChangeEmails(emails: string[]) {
+    this.filter.emails = emails;
+    this.updateFilter();
+  }
+
+  onChangeDateFrom(dateFrom: string) {
+    this.filter.dateFrom = dateFrom;
+    this.updateFilter();
+  }
+
+  onChangeDateTo(dateTo: string) {
+    this.filter.dateTo = dateTo;
+    this.updateFilter();
+  }
+
+  onChangeSearchText(searchText: string) {
+    this.filter.searchText = searchText;
+    this.updateFilter();
+  }
+
+  updateFilter() {
+    this.emailService.filter = this.filter;
+    this.emailService.load();
   }
 
 }
