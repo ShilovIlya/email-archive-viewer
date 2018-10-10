@@ -1,3 +1,4 @@
+<eav-pagination [pagingInfo]="pagingInfo | async" (changePage)="onChangePage($event)"></eav-pagination>
 <div *ngFor="let letter of letters | async" class="letter">
   <div>from: {{letter.from}}</div>
   <div>to: {{letter.to}}</div>

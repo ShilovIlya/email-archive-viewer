@@ -1,0 +1,13 @@
+span {
+  cursor: pointer;
+  margin: auto 5px;
+  color: grey;
+}
+
+span:hover {
+  color: black;
+}
+
+.selected-page {
+  color: black;
+}

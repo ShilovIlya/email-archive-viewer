@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {Observable} from "rxjs";
-import {Letter} from "../../model/letter";
-import {EmailDataService} from "../../service/email-data.service";
+import { Observable } from 'rxjs';
+import { EmailDataService } from '../../service/email-data.service';
 
 @Component({
   selector: 'eav-address-filter',
@@ -14,7 +13,8 @@ export class AddressFilterComponent implements OnInit {
   addresses: Observable<string[]>;
   selectedAddresses: string[];
 
-  constructor(private emailService: EmailDataService) { }
+  constructor(private emailService: EmailDataService) {
+  }
 
   ngOnInit() {
     this.addresses = this.emailService.addresses;

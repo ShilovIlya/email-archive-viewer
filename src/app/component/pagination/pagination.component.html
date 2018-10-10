@@ -1,1 +1,8 @@
-<span>&lt;</span><span>1</span><span>2</span><span>3</span><span>4</span><span>&gt;</span>
+<span (click)="firstPage()">&lt;&lt;</span>
+<span (click)="prevPage()">&lt;</span>
+<span *ngFor="let page of pages"
+      class="page"
+      [ngClass]="{'selected-page': page === _pagingInfo.currentPage}"
+      (click)="selectPage(page)">{{page}}</span>
+<span (click)="nexPage()">&gt;</span>
+<span (click)="lastPage()">&gt;&gt;</span>
