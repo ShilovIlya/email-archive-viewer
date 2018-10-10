@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {EmailDataService} from '../../service/email-data.service';
 
 @Component({
@@ -8,6 +8,7 @@ import {EmailDataService} from '../../service/email-data.service';
 })
 export class TextSearchComponent implements OnInit {
   searchTerm: string;
+  @Output() searchText = new EventEmitter<string>();
 
   constructor(private emailService: EmailDataService) { }
 
@@ -17,5 +18,6 @@ export class TextSearchComponent implements OnInit {
 
   changeSearchTerm(text: string) {
     this.emailService.searchText = text;
+    this.searchText.emit(text);
   }
 }

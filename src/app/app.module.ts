@@ -11,6 +11,7 @@ import { DateFilterComponent } from './component/date-filter/date-filter.compone
 import { PaginationComponent } from './component/pagination/pagination.component';
 import { LettersSheetComponent } from './component/letters-sheet/letters-sheet.component';
 import { FiltersComponent } from './component/filters/filters.component';
+import { SearchHighlightPipe } from './component/letters-sheet/search-highlight.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FiltersComponent } from './component/filters/filters.component';
     DateFilterComponent,
     PaginationComponent,
     LettersSheetComponent,
-    FiltersComponent
+    FiltersComponent,
+    SearchHighlightPipe
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 <div class="search-paging-bar">
-  <eav-text-search class="text-search-wrapper"></eav-text-search>
+  <eav-text-search class="text-search-wrapper" (searchText)="onSearchText($event)"></eav-text-search>
   <eav-pagination class="pagination-wrapper"
                   [pagingInfo]="pagingInfo | async"
                   (changePage)="onChangePage($event)"></eav-pagination>
@@ -7,9 +7,9 @@
 <div class="letters-container">
   <div *ngFor="let letter of letters | async" class="letter">
     <div>from: {{letter.from}}</div>
-    <div>to: {{letter.to}}</div>
-    <div>subject: {{letter.subject}}</div>
+    <div>to: {{letter.to}}}</div>
+    <div>subject: <span innerHTML="{{letter.subject | searchHighlight : searchText}}"></span></div>
     <div>date: {{letter.date}}</div>
-    <div>body: {{letter.body}}</div>
+    <div>body: <span innerHTML="{{letter.body | searchHighlight : searchText}}"></span></div>
   </div>
 </div>
