@@ -1,4 +1,7 @@
-<span>Filter by address:</span>
-<select multiple [(ngModel)]="selectedAddresses" (change)="onAddressesChange()">
+<div class="filter-header">Filter by address:</div>
+<select multiple
+        class="address-select"
+        [(ngModel)]="selectedAddresses"
+        (change)="onAddressesChange()">
   <option *ngFor="let address of addresses | async">{{address}}</option>
 </select>

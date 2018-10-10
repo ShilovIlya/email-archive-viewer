@@ -9,7 +9,7 @@ import { PagingInfo } from '../../model/pagingInfo';
 export class PaginationComponent implements OnInit {
   private _pagingInfo: PagingInfo;
   private _totalPages: number;
-  private pages: number[];
+  pages: number[];
   @Input()
   set pagingInfo(pagingInfo: PagingInfo) {
     this._pagingInfo = pagingInfo;

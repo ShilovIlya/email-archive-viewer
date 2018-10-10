@@ -1,0 +1,30 @@
+.filter {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.filters-vertical-header-wrapper {
+  flex: 0 0 auto;
+  width: 20px;
+  border-right: 1px solid;
+  cursor: pointer;
+}
+
+.filters-vertical-header-wrapper:hover {
+  background-color: whitesmoke;
+}
+
+.filters-vertical-header {
+  font-size: 15pt;
+  transform: rotate(-90deg) translate(-300px);
+}
+
+.filters-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  width: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

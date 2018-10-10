@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {EmailDataService} from '../../service/email-data.service';
 
 @Component({
   selector: 'eav-text-search',
@@ -7,16 +8,14 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class TextSearchComponent implements OnInit {
   searchTerm: string;
-  @Input() searchText: string;
-  @Output() changeSearchText = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private emailService: EmailDataService) { }
 
   ngOnInit() {
-    this.searchTerm = this.searchText;
+    this.searchTerm = this.emailService.searchText;
   }
 
   changeSearchTerm(text: string) {
-    this.changeSearchText.emit(text);
+    this.emailService.searchText = text;
   }
 }

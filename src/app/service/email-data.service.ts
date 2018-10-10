@@ -18,14 +18,18 @@ export class EmailDataService {
   private _pagingInfo: BehaviorSubject<PagingInfo>;
   private dataStore: {
     letters: Letter[],
+    filteredLetters: Letter[],
     addresses: string[]
   };
   private _filter: Filter;
+  private _searchText: string;
 
   constructor(private http: HttpClient) {
+    this._filter = new Filter([], '', '');
+    this._searchText = '';
     this._page = 1;
     this._pageSize = 10;
-    this.dataStore = {letters: [], addresses: []};
+    this.dataStore = {letters: [], filteredLetters: [], addresses: []};
     this._letters = <BehaviorSubject<Letter[]>>new BehaviorSubject([]);
     this._addresses = <BehaviorSubject<string[]>>new BehaviorSubject([]);
     const pagingInfo = new PagingInfo(0, this._pageSize, this._page);
@@ -39,52 +43,73 @@ export class EmailDataService {
     this._filter = filter;
     this._page = 1;
     this.filterLetters();
+    this.emitData();
+  }
+
+  get filter() {
+    return this._filter;
+  }
+
+  set searchText(text: string) {
+    this._searchText = text;
+    this._page = 1;
+    this.filterLetters();
+    this.emitData();
+  }
+
+  get searchText() {
+    return this._searchText;
   }
 
   set page(value: number) {
     if (value !== this.page) {
       this._page = value;
     }
-    this.filterLetters();
+    this.emitData();
+  }
+
+  get page() {
+    return this._page;
   }
 
   load() {
     this.http.get<Letter[]>('./assets/email.json')
       .pipe(
-        map(letters => letters.map(letter => new Letter(letter.from, letter.to, letter.subject,
-          letter.body, letter.date))))
+        map(letters => letters.map(this.constructLetter)))
       .subscribe(
         letters => {
           this.dataStore.letters = letters;
+          this.parseAddresses();
+          this._addresses.next([...this.dataStore.addresses]);
           this.filterLetters();
-          this.dataStore.addresses = this.parseLettersToAddresses(letters);
-          const addresses = Object.assign({}, this.dataStore).addresses;
-          this._addresses.next(addresses);
+          this.emitData();
         },
         error => console.log(error)
       );
   }
 
   filterLetters() {
-    const filteredLetters = Object.assign({}, this.dataStore).letters
+    this.dataStore.filteredLetters = [...this.dataStore.letters]
       .filter(this.checkEmailFilter)
       .filter(this.checkDate)
       .filter(this.checkSearchText);
-    this._letters.next(this.pagingLetters(filteredLetters, this._page, this._pageSize));
-    this._pagingInfo.next(new PagingInfo(filteredLetters.length, this._pageSize, this._page));
   }
 
-  pagingLetters(letters: Letter[], page: number, pageSize: number): Letter[] {
-    return letters.slice((page - 1) * pageSize, page * pageSize);
-  }
-
-  parseLettersToAddresses = letters =>
-    letters
+  parseAddresses() {
+    this.dataStore.addresses = this.dataStore.letters
       .reduce((result, letter) => result.concat(letter.to, letter.from), [])
-      .filter((value, index, array) => array.indexOf(value) === index)
+      .filter((value, index, array) => array.indexOf(value) === index);
+  }
+
+  emitData() {
+    this._letters.next(this.dataStore.filteredLetters.slice((this._page - 1) * this._pageSize, this._page * this._pageSize));
+    this._pagingInfo.next(new PagingInfo(this.dataStore.filteredLetters.length, this._pageSize, this._page));
+  }
+
+  constructLetter = letter => new Letter(letter.from, letter.to, letter.subject, letter.body, letter.date)
 
   checkSearchText = (letter: Letter): boolean =>
-  letter.subject.includes(this._filter.searchText) || letter.body.includes(this._filter.searchText)
+  letter.subject.includes(this._searchText) || letter.body.includes(this._searchText)
 
   checkDate = (letter: Letter): boolean =>
   (!this._filter.dateFrom || this._filter.dateFrom <= letter.date) &&

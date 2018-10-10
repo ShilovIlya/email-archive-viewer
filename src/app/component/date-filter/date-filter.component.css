@@ -2,6 +2,6 @@
   margin: 10px 10px 10px 0;
 }
 
-.date-filter-container > span, input {
-  margin-right: 2px;
+.filter-header {
+  text-align: center;
 }

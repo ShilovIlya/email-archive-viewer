@@ -1,7 +1,10 @@
 span {
+  display: inline-block;
+  font-weight: bold;
   cursor: pointer;
-  margin: auto 5px;
-  color: grey;
+  color: lightgrey;
+  padding: 3px 3px 1px;
+  text-align: center;
 }
 
 span:hover {
@@ -9,5 +12,5 @@ span:hover {
 }
 
 .selected-page {
-  color: black;
+  color: darkgrey;
 }

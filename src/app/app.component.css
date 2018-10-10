@@ -1,0 +1,46 @@
+.main-wrapper {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  background-color: whitesmoke;
+  height: 40px;
+  padding-top: 10px;
+  font-size: 20pt;
+  text-align: center;
+  vertical-align: center;
+  flex: 0 0 auto;
+}
+
+.main {
+  display: flex;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.footer {
+  flex: 0 0 auto;
+  height: 30px;
+  padding-top: 10px;
+  padding-right: 10px;
+  background-color: whitesmoke;
+  text-align: right;
+}
+
+.filter-panel {
+  display: flex;
+  flex: 0 0 auto;
+  overflow: hidden;
+}
+
+.letters-search-wrapper {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  overflow: auto;
+}
+
+

@@ -1,6 +1,5 @@
 export class Filter {
-  constructor(public searchText: string,
-              public emails: string[],
+  constructor(public emails: string[],
               public dateFrom: string,
               public dateTo: string) {
   }

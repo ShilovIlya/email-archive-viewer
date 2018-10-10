@@ -9,13 +9,13 @@ import { EmailDataService } from '../../service/email-data.service';
 })
 export class FiltersComponent implements OnInit {
   filter: Filter;
+  areFiltersOpen: boolean = true;
 
   constructor(private emailService: EmailDataService) {
   }
 
   ngOnInit() {
-    this.filter = new Filter('', [], '', '');
-    this.emailService.filter = this.filter;
+    this.filter = this.emailService.filter;
   }
 
   onChangeEmails(emails: string[]) {
@@ -33,13 +33,12 @@ export class FiltersComponent implements OnInit {
     this.updateFilter();
   }
 
-  onChangeSearchText(searchText: string) {
-    this.filter.searchText = searchText;
-    this.updateFilter();
-  }
-
   updateFilter() {
     this.emailService.filter = this.filter;
+  }
+
+  moveFilters() {
+    this.areFiltersOpen = !this.areFiltersOpen;
   }
 
 }

@@ -1,0 +1,11 @@
+.address-select {
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+.filter-header {
+  text-align: center;
+  flex: 0 0 auto;
+  height: 20px;
+  margin-bottom: 5px;
+}

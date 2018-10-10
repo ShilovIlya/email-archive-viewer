@@ -1,7 +1,7 @@
 <div class="date-filter-container">
-  <span>Date filter</span><br>
-  <span>from:</span>
+  <div class="filter-header">Filter by date:</div>
+  <div>from:</div>
   <input type="date" [value]="dateFrom" (input)="changeInputDateFrom($event)">
-  <span>to:</span>
+  <div>to:</div>
   <input type="date" [value]="dateTo" (input)="changeInputDateTo($event)">
 </div>
