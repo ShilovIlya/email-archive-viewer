@@ -1,6 +1,6 @@
 <eav-address-filter [emails]="filter.emails" (changeEmails)="onChangeEmails($event)"></eav-address-filter>
-<eav-date-filter [dateFrom]="filter.dateFrom"
-                 [dateTo]="filter.dateTo"
+<eav-date-filter [initDateFrom]="filter.dateFrom"
+                 [initDateTo]="filter.dateTo"
                  (changeDateFrom)="onChangeDateFrom($event)"
                  (changeDateTo)="onChangeDateTo($event)"></eav-date-filter>
 <eav-text-search [searchText]="filter.searchText"

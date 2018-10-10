@@ -1,4 +1,4 @@
-<input #searchTerm
-       class="text-search"
+<input class="text-search"
        placeholder="Поиск в почте"
-       (keyup)="changeSearchTerm(searchTerm.value)">
+       [value]="searchTerm"
+       (input)="changeSearchTerm($event.target.value)">

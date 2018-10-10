@@ -30,7 +30,6 @@ export class EmailDataService {
     this._addresses = <BehaviorSubject<string[]>>new BehaviorSubject([]);
     const pagingInfo = new PagingInfo(0, this._pageSize, this._page);
     this._pagingInfo = <BehaviorSubject<PagingInfo>>new BehaviorSubject(pagingInfo);
-    this._filter = new Filter('', [], '', '');
     this.letters = this._letters.asObservable();
     this.addresses = this._addresses.asObservable();
     this.pagingInfo = this._pagingInfo.asObservable();
@@ -38,6 +37,7 @@ export class EmailDataService {
 
   set filter(filter: Filter) {
     this._filter = filter;
+    this._page = 1;
     this.filterLetters();
   }
 
