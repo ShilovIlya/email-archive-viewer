@@ -27,6 +27,7 @@
   height: 17px;
   font-size: 11px;
   padding-right: 10px;
+  padding-top: 5px;
   background-color: whitesmoke;
   text-align: right;
 }
@@ -35,7 +36,7 @@
   display: flex;
   flex: 0 0 auto;
   overflow: hidden;
-  margin-top: 55px;
+  margin-top: 50px;
 }
 
 .letters-search-wrapper {

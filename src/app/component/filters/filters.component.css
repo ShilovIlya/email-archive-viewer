@@ -7,7 +7,6 @@
 .filters-vertical-header-wrapper {
   flex: 0 0 auto;
   width: 20px;
-  border-right: 1px solid #5a86ac;
   cursor: pointer;
 }
 
@@ -28,5 +27,5 @@
   width: 200px;
   overflow-y: auto;
   overflow-x: hidden;
-  transition: width 500ms;
+  transition: width 500ms ease-in-out;
 }

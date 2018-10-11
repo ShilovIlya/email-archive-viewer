@@ -12,6 +12,7 @@ import { PaginationComponent } from './component/pagination/pagination.component
 import { LettersSheetComponent } from './component/letters-sheet/letters-sheet.component';
 import { FiltersComponent } from './component/filters/filters.component';
 import { SearchHighlightPipe } from './component/letters-sheet/search-highlight.pipe';
+import { LetterComponent } from './component/letter/letter.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SearchHighlightPipe } from './component/letters-sheet/search-highlight.
     PaginationComponent,
     LettersSheetComponent,
     FiltersComponent,
-    SearchHighlightPipe
+    SearchHighlightPipe,
+    LetterComponent
   ],
   imports: [
     BrowserModule,

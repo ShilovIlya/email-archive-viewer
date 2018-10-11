@@ -1,0 +1,17 @@
+<div class="letter-head">
+  <span><b>From:</b> {{_letter.from}}</span>
+  <span class="letter-to"><b>To:</b> {{_letter.to.join(', ')}}</span>
+  <br/>
+  <span><b>Subject: </b>
+    <span class="letter-subject"
+          innerHTML="{{_letter.subject | searchHighlight : searchText}}"></span>
+  </span>
+  <span><b>Date:</b> {{_letter.date}}</span>
+</div>
+<div class="letter-message" >
+  <span innerHTML="{{message | searchHighlight : searchText}}"></span>
+</div>
+<div *ngIf="originalMessage !== ''" class="letter-original-message">
+  <button class='message-toggle-button' (click)="toggleOriginalMessage()">&#8226;  &#8226;  &#8226;</button>
+  <br/><span *ngIf="isOriginalMessageOpened" innerHTML="{{originalMessage | searchHighlight : searchText}}"></span>
+</div>

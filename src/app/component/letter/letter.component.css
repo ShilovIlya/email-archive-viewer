@@ -1,0 +1,39 @@
+.letter-head {
+  border-bottom: 1px solid lightgrey;
+  margin-bottom: 5px;
+}
+
+.letter-subject {
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.letter-message > span {
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.letter-original-message > span {
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.message-toggle-button {
+  border: 1px solid lightgrey;
+  border-radius: 35px;
+  background-color: white;
+  color: lightgrey;
+  cursor: pointer;
+}
+.message-toggle-button:focus {
+  outline: 0;
+}
+
+span {
+  margin-right: 5px;
+}
+
+.letter-to {
+  overflow: visible;
+  overflow-wrap: break-word;
+}

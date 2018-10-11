@@ -4,12 +4,9 @@
                   [pagingInfo]="pagingInfo | async"
                   (changePage)="onChangePage($event)"></eav-pagination>
 </div>
+<div class="delimiter"></div>
 <div class="letters-container">
   <div *ngFor="let letter of letters | async" class="letter">
-    <div>From: {{letter.from}}</div>
-    <div class="letter-to">To: {{letter.to}}</div>
-    <div>Subject: <span innerHTML="{{letter.subject | searchHighlight : searchText}}"></span></div>
-    <div>Date: {{letter.date}}</div>
-    <div><span innerHTML="{{letter.body | searchHighlight : searchText}}"></span></div>
+    <eav-letter [letter]="letter" [searchText]="searchText"></eav-letter>
   </div>
 </div>
