@@ -7,7 +7,7 @@
 .filters-vertical-header-wrapper {
   flex: 0 0 auto;
   width: 20px;
-  border-right: 1px solid;
+  border-right: 1px solid #5a86ac;
   cursor: pointer;
 }
 
@@ -17,7 +17,8 @@
 
 .filters-vertical-header {
   font-size: 15pt;
-  transform: rotate(-90deg) translate(-300px);
+  color: #5a86ac;
+  transform: rotate(-90deg) translate(-44vh);
 }
 
 .filters-wrapper {
@@ -27,4 +28,5 @@
   width: 200px;
   overflow-y: auto;
   overflow-x: hidden;
+  transition: width 500ms;
 }

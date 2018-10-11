@@ -10,7 +10,7 @@ export class SearchHighlightPipe implements PipeTransform {
       return value;
     }
     const re = new RegExp(args, 'gi');
-    return value.replace(re, "<mark>" + args + "</mark>");
+    return value.replace(re, '<mark>' + args + '</mark>');
   }
 
 }

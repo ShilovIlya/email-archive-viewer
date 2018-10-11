@@ -1,3 +1,8 @@
+.paging {
+  display: flex;
+  justify-content: space-between;
+}
+
 span {
   display: inline-block;
   font-weight: bold;
@@ -5,12 +10,13 @@ span {
   color: lightgrey;
   padding: 3px 3px 1px;
   text-align: center;
+  width: 15px;
 }
 
 span:hover {
-  color: black;
+  color: #5a86ac;
 }
 
 .selected-page {
-  color: darkgrey;
+  color: #5a86ac;
 }

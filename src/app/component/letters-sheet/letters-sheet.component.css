@@ -15,12 +15,13 @@
 
 .pagination-wrapper {
   flex: 0 0 auto;
+  margin-right: 5px;
 }
 
 .letters-container {
   flex: 1 1 auto;
   overflow: auto;
-  margin: 2px;
+  margin-right: 5px;
 }
 
 .letter {
@@ -29,6 +30,17 @@
   padding: 5px;
 }
 
-.letter > div {
+.letter > div > span {
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.letter-to {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.letter-to:hover {
+  overflow: visible;
   overflow-wrap: break-word;
 }

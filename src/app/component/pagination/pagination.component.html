@@ -1,4 +1,4 @@
-<div *ngIf="pages.length > 1">
+<div class="paging" *ngIf="pages.length > 1">
   <span *ngIf="pages.length >= 10" (click)="firstPage()">&lt;&lt;</span>
   <span *ngIf="pages.length >= 10" (click)="prevPage()">&lt;</span>
   <span *ngFor="let page of pages"

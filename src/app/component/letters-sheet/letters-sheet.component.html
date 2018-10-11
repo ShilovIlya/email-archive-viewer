@@ -6,10 +6,10 @@
 </div>
 <div class="letters-container">
   <div *ngFor="let letter of letters | async" class="letter">
-    <div>from: {{letter.from}}</div>
-    <div>to: {{letter.to}}}</div>
-    <div>subject: <span innerHTML="{{letter.subject | searchHighlight : searchText}}"></span></div>
-    <div>date: {{letter.date}}</div>
-    <div>body: <span innerHTML="{{letter.body | searchHighlight : searchText}}"></span></div>
+    <div>From: {{letter.from}}</div>
+    <div class="letter-to">To: {{letter.to}}</div>
+    <div>Subject: <span innerHTML="{{letter.subject | searchHighlight : searchText}}"></span></div>
+    <div>Date: {{letter.date}}</div>
+    <div><span innerHTML="{{letter.body | searchHighlight : searchText}}"></span></div>
   </div>
 </div>
