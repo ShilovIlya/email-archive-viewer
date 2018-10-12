@@ -112,9 +112,12 @@ export class EmailDataService {
   private checkSearchText = (letter: Letter): boolean =>
   letter.subject.includes(this._searchText) || letter.body.includes(this._searchText)
 
-  private checkDate = (letter: Letter): boolean =>
-  (!this._filter.dateFrom || this._filter.dateFrom <= letter.date) &&
-  (!this._filter.dateTo || letter.date <= this._filter.dateTo)
+  private checkDate = (letter: Letter): boolean => {
+    const dateTo = new Date(this._filter.dateTo);
+    dateTo.setDate(dateTo.getDate() + 1);
+    return (!this._filter.dateFrom || this._filter.dateFrom <= letter.date) &&
+      (!this._filter.dateTo || new Date(letter.date) <= dateTo);
+  }
 
   private checkEmailFilter = (letter: Letter): boolean =>
   !this._filter.emails.length || this._filter.emails.includes(letter.from) ||
