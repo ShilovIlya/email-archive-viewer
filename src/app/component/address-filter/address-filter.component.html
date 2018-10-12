@@ -1,7 +1,15 @@
 <div class="filter-header">Filter by address:</div>
-<select multiple
-        class="address-select"
-        [(ngModel)]="selectedAddresses"
-        (change)="onAddressesChange()">
-  <option *ngFor="let address of addresses | async">{{address}}</option>
-</select>
+<input class="address-search" [(ngModel)]="addressSearch">
+<div class="address-select">
+  <label *ngFor="let address of addresses | addressFilter : addressSearch : showChecked">
+    <input type="checkbox"
+           value="{{address.value}}"
+           [(ngModel)]="address.checked"
+           (change)="onAddressesChange()">
+    {{address.value}}
+  </label>
+</div>
+<label class="show-checked">
+  <input type="checkbox" [(ngModel)]="showChecked">
+  show only selected addresses
+</label>

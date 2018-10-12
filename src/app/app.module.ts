@@ -13,6 +13,7 @@ import { LettersSheetComponent } from './component/letters-sheet/letters-sheet.c
 import { FiltersComponent } from './component/filters/filters.component';
 import { SearchHighlightPipe } from './component/letters-sheet/search-highlight.pipe';
 import { LetterComponent } from './component/letter/letter.component';
+import { AddressFilterPipe } from './component/address-filter/address-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LetterComponent } from './component/letter/letter.component';
     LettersSheetComponent,
     FiltersComponent,
     SearchHighlightPipe,
-    LetterComponent
+    LetterComponent,
+    AddressFilterPipe
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .filters-vertical-header-wrapper {
@@ -24,8 +25,7 @@
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-  width: 200px;
   overflow-y: auto;
   overflow-x: hidden;
-  transition: width 500ms ease-in-out;
+  transition: width 500ms;
 }

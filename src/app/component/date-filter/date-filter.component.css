@@ -5,3 +5,7 @@
 .filter-header {
   text-align: center;
 }
+
+input {
+  width: 100%;
+}

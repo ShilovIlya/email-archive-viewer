@@ -1,11 +1,38 @@
-.address-select {
-  width: 100%;
-  flex: 1 1 auto;
-}
-
 .filter-header {
   text-align: center;
   flex: 0 0 auto;
   height: 20px;
   margin-bottom: 5px;
+}
+
+.address-search {
+  flex: 0 0 auto;
+  margin-bottom: 5px;
+}
+
+.address-select {
+  display: flex;
+  /*width: 100%;*/
+  flex: 1 1 auto;
+  flex-direction: column;
+  overflow: auto;
+}
+
+label {
+  font-size: 10pt;
+  flex: 0 0 auto;
+  display: flex;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+input {
+  cursor: pointer;
+}
+
+.show-checked {
+  margin-top: 10px;
 }
