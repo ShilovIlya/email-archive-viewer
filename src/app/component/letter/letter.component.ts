@@ -10,7 +10,7 @@ export class LetterComponent implements OnInit {
   _letter: Letter;
   message: string;
   originalMessage: string;
-  isOriginalMessageOpened: boolean = false;
+  isOriginalMessageOpened = false;
   @Input()
   set letter(letter: Letter) {
     this._letter = letter;

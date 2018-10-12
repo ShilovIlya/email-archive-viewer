@@ -9,7 +9,7 @@ import { EmailDataService } from '../../service/email-data.service';
 })
 export class FiltersComponent implements OnInit {
   filter: Filter;
-  areFiltersOpen: boolean = true;
+  areFiltersOpen = true;
 
   constructor(private emailService: EmailDataService) {
   }

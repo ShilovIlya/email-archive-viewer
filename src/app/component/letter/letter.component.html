@@ -1,6 +1,8 @@
 <div class="letter-head">
   <span><b>From:</b> {{_letter.from}}</span>
   <span class="letter-to"><b>To:</b> {{_letter.to.join(', ')}}</span>
+  <span class="letter-to"><b>Cc:</b> {{_letter.cc.join(', ')}}</span>
+  <span class="letter-to"><b>Bcc:</b> {{_letter.bcc.join(', ')}}</span>
   <br/>
   <span><b>Subject: </b>
     <span class="letter-subject"

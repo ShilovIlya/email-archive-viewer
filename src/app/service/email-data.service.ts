@@ -88,34 +88,35 @@ export class EmailDataService {
       );
   }
 
-  filterLetters() {
+  private filterLetters() {
     this.dataStore.filteredLetters = [...this.dataStore.letters]
       .filter(this.checkEmailFilter)
       .filter(this.checkDate)
       .filter(this.checkSearchText);
   }
 
-  parseAddresses() {
+  private parseAddresses() {
     this.dataStore.addresses = this.dataStore.letters
       .reduce((result, letter) => result.concat(letter.to, letter.from), [])
       .filter((value, index, array) => array.indexOf(value) === index);
   }
 
-  emitData() {
+  private emitData() {
     this._letters.next(this.dataStore.filteredLetters.slice((this._page - 1) * this._pageSize, this._page * this._pageSize));
     this._pagingInfo.next(new PagingInfo(this.dataStore.filteredLetters.length, this._pageSize, this._page));
   }
 
-  constructLetter = letter => new Letter(letter.from, letter.to, letter.subject, letter.body, letter.date)
+  private constructLetter = letter => new Letter(letter.from, letter.to, letter.cc, letter.bcc,
+    letter.subject, letter.body, letter.date)
 
-  checkSearchText = (letter: Letter): boolean =>
+  private checkSearchText = (letter: Letter): boolean =>
   letter.subject.includes(this._searchText) || letter.body.includes(this._searchText)
 
-  checkDate = (letter: Letter): boolean =>
+  private checkDate = (letter: Letter): boolean =>
   (!this._filter.dateFrom || this._filter.dateFrom <= letter.date) &&
   (!this._filter.dateTo || letter.date <= this._filter.dateTo)
 
-  checkEmailFilter = (letter: Letter): boolean =>
+  private checkEmailFilter = (letter: Letter): boolean =>
   !this._filter.emails.length || this._filter.emails.includes(letter.from) ||
   letter.to.reduce((result, email) => result || this._filter.emails.includes(email), false)
 }
