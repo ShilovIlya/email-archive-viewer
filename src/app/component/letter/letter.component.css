@@ -1,6 +1,6 @@
 .letter-head {
-  border-bottom: 1px solid lightgrey;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .letter-subject {

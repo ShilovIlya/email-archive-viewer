@@ -1,12 +1,31 @@
 <div class="search-paging-bar">
-  <eav-text-search class="text-search-wrapper" (searchText)="onSearchText($event)"></eav-text-search>
+  <div class="search-settings-wrapper">
+    <eav-text-search class="text-search-wrapper"
+                     (searchText)="onSearchText($event)"></eav-text-search>
+    <i class="fa fa-cog settings-cog"
+       [style.color]="isSettingsOpen ? '#5a86ac' : 'lightgrey'"
+       (click)="isSettingsOpen = !isSettingsOpen">
+    </i>
+  </div>
   <eav-pagination class="pagination-wrapper"
                   [pagingInfo]="pagingInfo | async"
                   (changePage)="onChangePage($event)"></eav-pagination>
 </div>
+<div class="settings" [style.height]="isSettingsOpen ? '30px' : '0'">
+  <label class="hide-letter-checkbox">
+    <input type="checkbox" [(ngModel)]="hideLetterBodies">
+    hide letter bodies by default
+  </label>
+  <select class="page-size-select"
+          [(ngModel)]="selectedPageSizeVariant"
+          (change)="changePageSize()">
+    <option *ngFor="let variant of pagingVariants">{{variant}}</option>
+  </select>
+  <label>page size</label>
+</div>
 <div class="delimiter"></div>
 <div class="letters-container">
   <div *ngFor="let letter of letters | async" class="letter">
-    <eav-letter [letter]="letter" [searchText]="searchText"></eav-letter>
+    <eav-letter [letter]="letter" [searchText]="searchText" [hide]="hideLetterBodies"></eav-letter>
   </div>
 </div>

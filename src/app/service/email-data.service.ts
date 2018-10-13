@@ -61,6 +61,14 @@ export class EmailDataService {
     return this._searchText;
   }
 
+  set pageSize(size: number) {
+    if (this._pageSize !== size) {
+      this._pageSize = size;
+      this._page = 1;
+      this._pagingInfo.next(new PagingInfo(this.dataStore.filteredLetters.length, this._pageSize, this._page));
+    }
+  }
+
   set page(value: number) {
     if (value !== this.page) {
       this._page = value;

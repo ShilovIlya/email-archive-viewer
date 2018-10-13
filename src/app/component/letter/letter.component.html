@@ -1,8 +1,9 @@
-<div class="letter-head">
+<div class="letter-head" (click)="toggleHideBody()"
+     [style.border-bottom]="hideBody ? 'none' : '1px solid lightgrey'">
   <span><b>From:</b> {{_letter.from}}</span>
   <span class="letter-to"><b>To:</b> {{_letter.to.join(', ')}}</span>
-  <span class="letter-to"><b>Cc:</b> {{_letter.cc.join(', ')}}</span>
-  <span class="letter-to"><b>Bcc:</b> {{_letter.bcc.join(', ')}}</span>
+  <span class="letter-to" *ngIf="_letter.cc.length > 0"><b>Cc:</b> {{_letter.cc.join(', ')}}</span>
+  <span class="letter-to" *ngIf="_letter.bcc.length > 0"><b>Bcc:</b> {{_letter.bcc.join(', ')}}</span>
   <br/>
   <span><b>Subject: </b>
     <span class="letter-subject"
@@ -10,10 +11,10 @@
   </span>
   <span><b>Date:</b> {{_letter.date}}</span>
 </div>
-<div class="letter-message" >
-  <span innerHTML="{{message | searchHighlight : searchText}}"></span>
+<div class="letter-message">
+  <span *ngIf="!hideBody" innerHTML="{{message | searchHighlight : searchText}}"></span>
 </div>
-<div *ngIf="originalMessage !== ''" class="letter-original-message">
+<div *ngIf="originalMessage !== '' && !hideBody" class="letter-original-message">
   <button class='message-toggle-button' (click)="toggleOriginalMessage()">&#8226;  &#8226;  &#8226;</button>
   <br/><span *ngIf="isOriginalMessageOpened" innerHTML="{{originalMessage | searchHighlight : searchText}}"></span>
 </div>

@@ -11,6 +11,11 @@ export class LetterComponent implements OnInit {
   message: string;
   originalMessage: string;
   isOriginalMessageOpened = false;
+  hideBody = false;
+  @Input()
+  set hide(flag: boolean) {
+    this.hideBody = flag;
+  }
   @Input()
   set letter(letter: Letter) {
     this._letter = letter;
@@ -33,5 +38,9 @@ export class LetterComponent implements OnInit {
 
   toggleOriginalMessage() {
     this.isOriginalMessageOpened = !this.isOriginalMessageOpened;
+  }
+
+  toggleHideBody() {
+    this.hideBody = !this.hideBody;
   }
 }
