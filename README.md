@@ -10,14 +10,12 @@
 ## Additional functionality:
 
 - Highlight text search
+- Hide quote in response to the letter
 
-### Development server
+### Run server
 
-Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. 
-
-### Build
-
-Run `npm run build` to build the project.
+Run `npm run postinstall` to build dist. 
+Run `npm run start` for a dev server. Navigate to `http://localhost:8080/`. 
 
 ### Running unit tests
 
