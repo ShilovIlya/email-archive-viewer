@@ -12,26 +12,30 @@ export class LetterComponent implements OnInit {
   originalMessage: string;
   isOriginalMessageOpened = false;
   hideBody = false;
+
   @Input()
   set hide(flag: boolean) {
     this.hideBody = flag;
   }
+
   @Input()
   set letter(letter: Letter) {
     this._letter = letter;
     const checkSubject = letter.subject.search('RE:');
     const checkBody = letter.body.search('----- Original Message -----|-----Original Message-----');
     if (checkSubject !== -1 && checkBody !== -1) {
-        this.message = letter.body.slice(0, checkBody);
-        this.originalMessage = letter.body.slice(checkBody);
+      this.message = letter.body.slice(0, checkBody);
+      this.originalMessage = letter.body.slice(checkBody);
     } else {
       this.message = letter.body;
       this.originalMessage = '';
     }
   }
+
   @Input() searchText: string;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

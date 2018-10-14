@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddressFilterComponent } from './address-filter.component';
+import {FormsModule} from "@angular/forms";
+import {EmailDataService} from "../../service/email-data.service";
+import {AddressFilterPipe} from "./address-filter.pipe";
+import {HttpClientModule} from "@angular/common/http";
 
 describe('AddressFilterComponent', () => {
   let component: AddressFilterComponent;
@@ -8,7 +12,15 @@ describe('AddressFilterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddressFilterComponent ]
+      declarations: [
+        AddressFilterComponent,
+        AddressFilterPipe
+      ],
+      imports: [
+        HttpClientModule,
+        FormsModule
+      ],
+      providers: [EmailDataService]
     })
     .compileComponents();
   }));

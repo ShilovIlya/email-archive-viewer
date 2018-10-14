@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { EmailDataService } from '../../service/email-data.service';
-import {AddressFilterPipe} from "./address-filter.pipe";
+import { AddressFilterPipe } from "./address-filter.pipe";
 
 @Component({
   selector: 'eav-address-filter',

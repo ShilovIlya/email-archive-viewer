@@ -8,7 +8,7 @@ export class SearchHighlightPipe implements PipeTransform {
     if (!args.length) {
       return value;
     }
-    const re = new RegExp(args.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+    const re = new RegExp(args.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
     return value.replace(re, '<mark>$&</mark>');
   }
 
