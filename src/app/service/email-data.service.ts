@@ -81,7 +81,7 @@ export class EmailDataService {
     if (this._pageSize !== size) {
       this._pageSize = size;
       this._page = 1;
-      this._pagingInfo.next(new PagingInfo(this.dataStore.filteredLetters.length, this._pageSize, this._page));
+      this.emitData();
     }
   }
 
