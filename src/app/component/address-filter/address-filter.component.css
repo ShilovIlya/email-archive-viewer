@@ -42,7 +42,7 @@ label {
 }
 
 .address-label:hover {
-  word-break: break-word;
+  word-break: break-all;
 }
 
 input {
