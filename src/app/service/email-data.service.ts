@@ -25,8 +25,14 @@ export class EmailDataService {
   private _searchText: string;
 
   constructor(private http: HttpClient) {
-    this._filter = new Filter([], '', '');
-    this._searchText = '';
+    if (sessionStorage.getItem('dataFilter')) {
+      const filterData = JSON.parse(sessionStorage.getItem('dataFilter'));
+      this._filter = new Filter(filterData.emails, filterData.dateFrom, filterData.dateTo);
+      this._searchText = filterData.searchText;
+    } else {
+      this._filter = new Filter([], '', '');
+      this._searchText = '';
+    }
     this._page = 1;
     this._pageSize = 20;
     this.dataStore = {letters: [], filteredLetters: [], addresses: []};
@@ -41,6 +47,7 @@ export class EmailDataService {
 
   set filter(filter: Filter) {
     this._filter = filter;
+    this.updateSessionStorage();
     this._page = 1;
     this.filterLetters();
     this.emitData();
@@ -52,6 +59,7 @@ export class EmailDataService {
 
   set searchText(text: string) {
     this._searchText = text;
+    this.updateSessionStorage();
     this._page = 1;
     this.filterLetters();
     this.emitData();
@@ -130,4 +138,14 @@ export class EmailDataService {
   private checkEmailFilter = (letter: Letter): boolean =>
   !this._filter.emails.length || this._filter.emails.includes(letter.from) ||
   letter.to.reduce((result, email) => result || this._filter.emails.includes(email), false)
+
+  private updateSessionStorage() {
+    const filterData = JSON.stringify({
+      emails: this._filter.emails,
+      dateFrom: this._filter.dateFrom,
+      dateTo: this._filter.dateTo,
+      searchText: this._searchText
+    });
+    sessionStorage.setItem('dataFilter', filterData);
+  }
 }

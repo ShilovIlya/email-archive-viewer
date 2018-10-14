@@ -18,10 +18,12 @@ export class AddressFilterComponent implements OnInit {
   }
 
   ngOnInit() {
+    const data = sessionStorage.getItem('dataFilter');
+    const savedFilteredEmails = data ? JSON.parse(data).emails : false;
     this.emailService.addresses.subscribe(addresses => {
       this.addresses = addresses.sort()
         .map(address => {
-          return {'value': address, 'checked': false};
+          return {'value': address, 'checked': savedFilteredEmails && savedFilteredEmails.includes(address)};
         });
     });
     this.emailService.load();
