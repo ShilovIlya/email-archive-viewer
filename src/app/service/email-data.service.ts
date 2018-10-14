@@ -11,11 +11,13 @@ export class EmailDataService {
   public letters: Observable<Letter[]>;
   public addresses: Observable<string[]>;
   public pagingInfo: Observable<PagingInfo>;
+  public loading: Observable<boolean>;
   private _page: number;
   private _pageSize: number;
   private _letters: BehaviorSubject<Letter[]>;
   private _addresses: BehaviorSubject<string[]>;
   private _pagingInfo: BehaviorSubject<PagingInfo>;
+  private _loading: BehaviorSubject<boolean>;
   private dataStore: {
     letters: Letter[],
     filteredLetters: Letter[],
@@ -40,17 +42,21 @@ export class EmailDataService {
     this._addresses = <BehaviorSubject<string[]>>new BehaviorSubject([]);
     const pagingInfo = new PagingInfo(0, this._pageSize, this._page);
     this._pagingInfo = <BehaviorSubject<PagingInfo>>new BehaviorSubject(pagingInfo);
+    this._loading = <BehaviorSubject<boolean>>new BehaviorSubject<boolean>(false);
     this.letters = this._letters.asObservable();
     this.addresses = this._addresses.asObservable();
     this.pagingInfo = this._pagingInfo.asObservable();
+    this.loading = this._loading.asObservable();
   }
 
   set filter(filter: Filter) {
     this._filter = filter;
+    this._loading.next(true);
     this.updateSessionStorage();
     this._page = 1;
     this.filterLetters();
     this.emitData();
+    this._loading.next(false);
   }
 
   get filter() {
@@ -59,10 +65,12 @@ export class EmailDataService {
 
   set searchText(text: string) {
     this._searchText = text;
+    this._loading.next(true);
     this.updateSessionStorage();
     this._page = 1;
     this.filterLetters();
     this.emitData();
+    this._loading.next(false);
   }
 
   get searchText() {
@@ -89,6 +97,7 @@ export class EmailDataService {
   }
 
   load() {
+    this._loading.next(true);
     this.http.get<Letter[]>('./assets/email.json')
       .pipe(
         map(letters => letters.map(this.constructLetter)))
@@ -99,8 +108,12 @@ export class EmailDataService {
           this._addresses.next([...this.dataStore.addresses]);
           this.filterLetters();
           this.emitData();
+          this._loading.next(false);
         },
-        error => console.log(error)
+        error => {
+          console.log(error);
+          this._loading.next(false);
+        }
       );
   }
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EmailDataService } from '../../service/email-data.service';
 import { Letter } from '../../model/letter';
 import { Observable } from 'rxjs/index';

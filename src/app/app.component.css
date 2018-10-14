@@ -45,4 +45,24 @@
   overflow: auto;
 }
 
+.spinner {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+}
 
+.spinner-background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  opacity: 0.1;
+  background-color: gray;
+}
+
+.spinner > img {
+  margin: auto;
+  height: 50px;
+}
