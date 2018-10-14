@@ -9,7 +9,7 @@
     <span class="letter-subject"
           innerHTML="{{_letter.subject | searchHighlight : searchText}}"></span>
   </span>
-  <span><b>Date:</b> {{_letter.date}}</span>
+  <span><b>Date:</b> {{_letter.date | date : "EEEE, MMMM d, y, h:mm:ss a z"}}</span>
 </div>
 <div class="letter-message">
   <span *ngIf="!hideBody" innerHTML="{{message | searchHighlight : searchText}}"></span>

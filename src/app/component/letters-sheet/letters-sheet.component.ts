@@ -14,7 +14,7 @@ export class LettersSheetComponent implements OnInit {
   pagingInfo: Observable<PagingInfo>;
   searchText: string;
   isSettingsOpen = false;
-  hideLetterBodies = false;
+  hideLetterBodies = true;
   pagingVariants = [];
   selectedPageSizeVariant: number;
 
@@ -26,7 +26,7 @@ export class LettersSheetComponent implements OnInit {
     this.emailService.load();
     this.searchText = this.emailService.searchText;
     this.pagingVariants = [10, 20, 50];
-    this.selectedPageSizeVariant = 10;
+    this.selectedPageSizeVariant = 20;
   }
 
   onChangePage(page: number) {

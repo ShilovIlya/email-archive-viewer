@@ -1,7 +1,9 @@
 <div class="date-filter-container">
   <div class="filter-header">Filter by date:</div>
   <div>from:</div>
-  <input type="date" [value]="dateFrom" (input)="changeInputDateFrom($event)">
+  <input type="date" min="1970-01-01" [max]="today"
+         [value]="dateFrom" (input)="changeInputDateFrom($event)">
   <div>to:</div>
-  <input type="date" [value]="dateTo" (input)="changeInputDateTo($event)">
+  <input type="date" min="1970-01-01" [max]="today"
+         [value]="dateTo" (input)="changeInputDateTo($event)">
 </div>

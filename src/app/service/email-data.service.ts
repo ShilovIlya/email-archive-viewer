@@ -28,7 +28,7 @@ export class EmailDataService {
     this._filter = new Filter([], '', '');
     this._searchText = '';
     this._page = 1;
-    this._pageSize = 10;
+    this._pageSize = 20;
     this.dataStore = {letters: [], filteredLetters: [], addresses: []};
     this._letters = <BehaviorSubject<Letter[]>>new BehaviorSubject([]);
     this._addresses = <BehaviorSubject<string[]>>new BehaviorSubject([]);

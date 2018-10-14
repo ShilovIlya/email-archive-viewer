@@ -7,14 +7,27 @@
 
 .address-search {
   flex: 0 0 auto;
+  cursor: auto;
   margin-bottom: 5px;
+}
+
+.address-select-filter {
+  flex: 0 0 auto;;
+  margin-bottom: 5px;
+  display: flex;
+}
+
+.select-all-addresses {
+  flex-grow: 1;
+  cursor: pointer;
 }
 
 .address-select {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 label {
@@ -26,6 +39,10 @@ label {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.address-label:hover {
+  word-break: break-word;
 }
 
 input {

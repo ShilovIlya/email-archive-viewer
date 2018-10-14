@@ -1,7 +1,12 @@
 <div class="filter-header">Filter by address:</div>
 <input class="address-search" [(ngModel)]="addressSearch">
+<div class="address-select-filter">
+  <button class="select-all-addresses" (click)="selectAll()">select all</button>
+  <button class="select-all-addresses" (click)="unselectAll()">unselect all</button>
+</div>
 <div class="address-select">
-  <label *ngFor="let address of addresses | addressFilter : addressSearch : showChecked">
+  <label *ngFor="let address of addresses | addressFilter : addressSearch : showChecked"
+        class="address-label">
     <input type="checkbox"
            value="{{address.value}}"
            [(ngModel)]="address.checked"

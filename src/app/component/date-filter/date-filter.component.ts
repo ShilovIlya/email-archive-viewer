@@ -8,6 +8,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class DateFilterComponent implements OnInit {
   dateFrom: string;
   dateTo: string;
+  today: string;
   @Input() initDateFrom: string;
   @Input() initDateTo: string;
   @Output() changeDateFrom = new EventEmitter<string>();
@@ -18,6 +19,7 @@ export class DateFilterComponent implements OnInit {
   ngOnInit() {
     this.dateFrom = this.initDateFrom;
     this.dateTo = this.initDateTo;
+    this.today = new Date().toJSON().split('T')[0];
   }
 
   changeInputDateFrom(event) {

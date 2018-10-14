@@ -12,6 +12,10 @@
 - Highlight text search
 - Hide quote in response to the letter
 
+### Run dev server
+
+Run `npm run dev-start` for a dev server. Navigate to `http://localhost:4200/`.
+
 ### Run server
 
 Run `npm run postinstall` to build dist. 
