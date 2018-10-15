@@ -139,7 +139,8 @@ export class EmailDataService {
     letter.subject, letter.body, letter.date)
 
   private checkSearchText = (letter: Letter): boolean =>
-  letter.subject.includes(this._searchText) || letter.body.includes(this._searchText)
+  letter.subject.toLowerCase().includes(this._searchText.toLowerCase()) ||
+    letter.body.toLowerCase().includes(this._searchText.toLowerCase())
 
   private checkDate = (letter: Letter): boolean => {
     const dateTo = new Date(this._filter.dateTo);
