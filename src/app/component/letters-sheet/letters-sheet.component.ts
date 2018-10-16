@@ -13,12 +13,16 @@ export class LettersSheetComponent implements OnInit {
   letters: Observable<Letter[]>;
   pagingInfo: Observable<PagingInfo>;
   searchText: string;
-  isSettingsOpen = false;
-  hideLetterBodies = true;
-  pagingVariants = [];
+  isSettingsOpen: boolean;
+  hideLetterBodies: boolean;
+  pagingVariants: number[];
   selectedPageSizeVariant: number;
 
-  constructor(private emailService: EmailDataService) { }
+  constructor(private emailService: EmailDataService) {
+    this.isSettingsOpen = false;
+    this.hideLetterBodies = true;
+    this.pagingVariants = [];
+  }
 
   ngOnInit() {
     this.letters = this.emailService.letters;

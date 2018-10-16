@@ -10,11 +10,14 @@ import { AddressFilterPipe } from "./address-filter.pipe";
 export class AddressFilterComponent implements OnInit {
   @Input() emails: string[];
   @Output() changeEmails = new EventEmitter<string[]>();
-  addresses = [];
-  addressSearch = '';
-  showChecked = false;
+  addresses: {value: string, checked: boolean}[];
+  addressSearch: string;
+  showChecked: boolean;
 
   constructor(private emailService: EmailDataService) {
+    this.addresses = [];
+    this.addressSearch = '';
+    this.showChecked = false;
   }
 
   ngOnInit() {

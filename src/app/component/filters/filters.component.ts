@@ -9,9 +9,10 @@ import { EmailDataService } from '../../service/email-data.service';
 })
 export class FiltersComponent implements OnInit {
   filter: Filter;
-  areFiltersOpen = true;
+  areFiltersOpen: boolean;
 
   constructor(private emailService: EmailDataService) {
+    this.areFiltersOpen = true;
   }
 
   ngOnInit() {

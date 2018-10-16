@@ -135,7 +135,7 @@ export class EmailDataService {
     this._pagingInfo.next(new PagingInfo(this.dataStore.filteredLetters.length, this._pageSize, this._page));
   }
 
-  private constructLetter = letter => new Letter(letter.from, letter.to, letter.cc, letter.bcc,
+  private constructLetter = (letter: Letter) => new Letter(letter.from, letter.to, letter.cc, letter.bcc,
     letter.subject, letter.body, letter.date)
 
   private checkSearchText = (letter: Letter): boolean =>

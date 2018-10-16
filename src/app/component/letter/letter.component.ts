@@ -10,8 +10,8 @@ export class LetterComponent implements OnInit {
   _letter: Letter;
   message: string;
   originalMessage: string;
-  isOriginalMessageOpened = false;
-  hideBody = false;
+  isOriginalMessageOpened: boolean;
+  hideBody: boolean;
 
   @Input()
   set hide(flag: boolean) {
@@ -35,6 +35,8 @@ export class LetterComponent implements OnInit {
   @Input() searchText: string;
 
   constructor() {
+    this.isOriginalMessageOpened = false;
+    this.hideBody = false;
   }
 
   ngOnInit() {
