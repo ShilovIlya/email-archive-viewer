@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LetterComponent } from './letter.component';
 import {SearchHighlightPipe} from "../letters-sheet/search-highlight.pipe";
+import { ReplyLetterComponent } from '../reply-letter/reply-letter.component';
 
 describe('LetterComponent', () => {
   let component: LetterComponent;
@@ -11,7 +12,8 @@ describe('LetterComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         LetterComponent,
-        SearchHighlightPipe
+        SearchHighlightPipe,
+        ReplyLetterComponent
       ]
     })
     .compileComponents();

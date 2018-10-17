@@ -14,6 +14,7 @@ import { PaginationComponent } from './component/pagination/pagination.component
 import { SearchHighlightPipe } from './component/letters-sheet/search-highlight.pipe';
 import { EmailDataService } from './service/email-data.service';
 import { AddressFilterPipe } from './component/address-filter/address-filter.pipe';
+import { ReplyLetterComponent } from './component/reply-letter/reply-letter.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -28,7 +29,8 @@ describe('AppComponent', () => {
         FiltersComponent,
         SearchHighlightPipe,
         LetterComponent,
-        AddressFilterPipe
+        AddressFilterPipe,
+        ReplyLetterComponent
       ],
       imports: [
         BrowserModule,

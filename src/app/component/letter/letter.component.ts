@@ -9,8 +9,7 @@ import {Letter} from '../../model/letter';
 export class LetterComponent implements OnInit {
   _letter: Letter;
   message: string;
-  originalMessage: string;
-  isOriginalMessageOpened: boolean;
+  replyMessage: string;
   hideBody: boolean;
 
   @Input()
@@ -25,25 +24,20 @@ export class LetterComponent implements OnInit {
     const checkBody = letter.body.search('----- Original Message -----|-----Original Message-----');
     if (checkSubject !== -1 && checkBody !== -1) {
       this.message = letter.body.slice(0, checkBody);
-      this.originalMessage = letter.body.slice(checkBody);
+      this.replyMessage = letter.body.slice(checkBody);
     } else {
       this.message = letter.body;
-      this.originalMessage = '';
+      this.replyMessage = '';
     }
   }
 
   @Input() searchText: string;
 
   constructor() {
-    this.isOriginalMessageOpened = false;
     this.hideBody = false;
   }
 
   ngOnInit() {
-  }
-
-  toggleOriginalMessage() {
-    this.isOriginalMessageOpened = !this.isOriginalMessageOpened;
   }
 
   toggleHideBody() {

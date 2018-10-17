@@ -1,0 +1,22 @@
+.reply-text {
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.reply-toggle-button {
+  border: 1px solid lightgrey;
+  border-radius: 35px;
+  background-color: white;
+  color: lightgrey;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+.reply-toggle-button:focus {
+  outline: 0;
+}
+
+.reply-block {
+  margin-left: 14px;
+  padding-left: 5px;
+  border-left: 1px solid lightgrey;
+}

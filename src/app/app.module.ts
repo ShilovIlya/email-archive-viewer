@@ -14,6 +14,7 @@ import { FiltersComponent } from './component/filters/filters.component';
 import { SearchHighlightPipe } from './component/letters-sheet/search-highlight.pipe';
 import { LetterComponent } from './component/letter/letter.component';
 import { AddressFilterPipe } from './component/address-filter/address-filter.pipe';
+import { ReplyLetterComponent } from './component/reply-letter/reply-letter.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AddressFilterPipe } from './component/address-filter/address-filter.pip
     FiltersComponent,
     SearchHighlightPipe,
     LetterComponent,
-    AddressFilterPipe
+    AddressFilterPipe,
+    ReplyLetterComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { LetterComponent } from '../letter/letter.component';
 import { SearchHighlightPipe } from './search-highlight.pipe';
 import { EmailDataService } from '../../service/email-data.service';
+import { ReplyLetterComponent } from '../reply-letter/reply-letter.component';
 
 describe('LettersSheetComponent', () => {
   let component: LettersSheetComponent;
@@ -21,7 +22,8 @@ describe('LettersSheetComponent', () => {
         TextSearchComponent,
         PaginationComponent,
         LetterComponent,
-        SearchHighlightPipe
+        SearchHighlightPipe,
+        ReplyLetterComponent
       ],
       imports: [
         BrowserModule,

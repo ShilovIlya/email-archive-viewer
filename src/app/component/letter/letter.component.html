@@ -14,7 +14,6 @@
 <div class="letter-message">
   <span *ngIf="!hideBody" innerHTML="{{message | searchHighlight : searchText}}"></span>
 </div>
-<div *ngIf="originalMessage !== '' && !hideBody" class="letter-original-message">
-  <button class='message-toggle-button' (click)="toggleOriginalMessage()">&#8226;  &#8226;  &#8226;</button>
-  <br/><span *ngIf="isOriginalMessageOpened" innerHTML="{{originalMessage | searchHighlight : searchText}}"></span>
+<div *ngIf="replyMessage !== '' && !hideBody">
+  <eav-reply-letter [searchText]="searchText" [replyMessage]="replyMessage"></eav-reply-letter>
 </div>

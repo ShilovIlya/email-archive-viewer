@@ -1,0 +1,10 @@
+<button class='reply-toggle-button'
+        (click)="toggleReplyOpen()">&#8226; &#8226; &#8226;
+</button>
+<br/>
+<div *ngIf="isReplyOpened" class="reply-block">
+  <span class="reply-text" innerHTML="{{message | searchHighlight : searchText}}"></span>
+  <div *ngIf="innerReply !== ''">
+    <eav-reply-letter [searchText]="searchText" [replyMessage]="innerReply"></eav-reply-letter>
+  </div>
+</div>
