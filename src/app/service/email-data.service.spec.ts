@@ -15,8 +15,8 @@ describe('EmailDataService', () => {
         'testto1@test.com',
         'testto2@test.com'
       ],
-      'cc': [],
-      'bcc': [],
+      'cc': ['testcc@test.com'],
+      'bcc': ['testbcc@test.com'],
       'subject': 'test subject',
       'body': 'test body',
       'date': '2001-12-31T06:49:42.000+0000'
@@ -24,8 +24,8 @@ describe('EmailDataService', () => {
   ];
   const expectedData = [
     new Letter(
-      'testfrom@test.com', ['testto1@test.com', 'testto2@test.com'], [], [], 'test subject',
-      'test body', '2001-12-31T06:49:42.000+0000'
+      'testfrom@test.com', ['testto1@test.com', 'testto2@test.com'], ['testcc@test.com'],
+      ['testbcc@test.com'], 'test subject','test body', '2001-12-31T06:49:42.000+0000'
     )
   ];
 

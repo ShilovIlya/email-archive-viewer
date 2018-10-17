@@ -1,10 +1,10 @@
 <div class="paging" *ngIf="pages.length > 1">
-  <span *ngIf="pages.length >= 10" (click)="firstPage()">&lt;&lt;</span>
-  <span *ngIf="pages.length >= 10" (click)="prevPage()">&lt;</span>
+  <span id="first" *ngIf="pages.length >= 10" (click)="firstPage()">&lt;&lt;</span>
+  <span id="prev" *ngIf="pages.length >= 10" (click)="prevPage()">&lt;</span>
   <span *ngFor="let page of pages"
         class="page"
         [ngClass]="{'selected-page': page === _pagingInfo.currentPage}"
         (click)="selectPage(page)">{{page}}</span>
-  <span *ngIf="pages.length >= 10" (click)="nexPage()">&gt;</span>
-  <span *ngIf="pages.length >= 10" (click)="lastPage()">&gt;&gt;</span>
+  <span id="next" *ngIf="pages.length >= 10" (click)="nexPage()">&gt;</span>
+  <span id="last" *ngIf="pages.length >= 10" (click)="lastPage()">&gt;&gt;</span>
 </div>
