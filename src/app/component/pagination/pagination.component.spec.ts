@@ -27,7 +27,7 @@ describe('PaginationComponent', () => {
     expect(component.pages).toEqual(expectedPages);
   }
 
-  it('should emit first page when current page is less then 1', () => {
+  it('should emit first page when current page is less than 1', () => {
     let currentPage: number;
     component.changePage.subscribe((page: number) => currentPage = page);
     component.pagingInfo = new PagingInfo(10, 10, 0);
@@ -35,7 +35,7 @@ describe('PaginationComponent', () => {
     expect(currentPage).toBe(1);
   })
 
-  it('should emit last page when current page is greater then totalItems/pageSize', () => {
+  it('should emit last page when current page is greater than totalItems/pageSize', () => {
     let currentPage: number;
     component.changePage.subscribe((page: number) => {currentPage = page; console.log(currentPage)});
     component.pagingInfo = new PagingInfo(32, 10, 5);
@@ -43,12 +43,12 @@ describe('PaginationComponent', () => {
     expect(currentPage).toBe(4);
   })
 
-  it('should have pages from 1 to 10 when current page is less then 6 and totalItems/pageSize is greater then 10', () => {
+  it('should have pages from 1 to 10 when current page is less than 6 and totalItems/pageSize is greater than 10', () => {
     const expectedPages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     testUpdatePagination(188, 10, 6, expectedPages);
   })
 
-  it('should have pages from 1 to totalItems/pageSize when totalItems/pageSize is less then then 10', () => {
+  it('should have pages from 1 to totalItems/pageSize when totalItems/pageSize is less than 10', () => {
     const expectedPages = [1, 2, 3, 4];
     testUpdatePagination(152, 50, 3, expectedPages);
   })
@@ -113,7 +113,7 @@ describe('PaginationComponent', () => {
     expect(currentPage).toBe(7);
   })
 
-  it('should not have <<,<,>,>> when pages less then 10', () => {
+  it('should not have <<,<,>,>> when pages less than 10', () => {
     let currentPage: number;
     component.changePage.subscribe((page: number) => currentPage = page);
     component.pagingInfo = new PagingInfo(188, 50, 2);
